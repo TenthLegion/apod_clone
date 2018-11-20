@@ -1,0 +1,51 @@
+<%= require 'net/http'
+require 'json'
+ #This URL was taken from wikipedia's list of open APIs. It's of NFL arrests/criminal records.Found here: http://nflarrest.com/api/
+
+url = 'https://api.nasa.gov/planetary/apod?api_key=yZSB46RM09YmLOGDCm6BJeD7idyfCVa6NT95hWbC'
+#url = 'https://venmo.com/api/v5/public'
+
+uri = URI(url)
+response = Net::HTTP.get(uri)
+obj = JSON.parse(response)
+var = obj['url']
+expl = obj['explanation']
+puts response
+puts "this is the URL: #{var}"
+
+%>
+
+	
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>"Rokk's APOD Site: Courtesy of NASA"</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="jumbotron text-center">
+  <h1>Today&#39;s Astronomy Photo</h1>
+  <p>The magic of the cosmos!</p> 
+</div>
+  
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h3> </h3>
+      <p><%=expl%></p>
+		<img src=<%=var%> class="w3-round" alt="Norway" style="width:30%" height: 100%> </img> 
+    </div>
+   
+    
+  </div>
+</div>
+
+</body>
+</html>
