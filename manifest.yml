@@ -1,0 +1,5 @@
+---
+applications:
+- name: my-apod
+  memory: 512M
+  instances: 1
